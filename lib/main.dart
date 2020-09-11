@@ -1,5 +1,5 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Date and Time'),
     );
   }
 }
@@ -40,26 +40,34 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor:Colors.red,
+
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            FlatButton(
+              child: Text('Button'),
+              onPressed: (){
+              },
+              color:Colors.red,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: DateTimePicker(
+                initialValue: '',
+               firstDate: DateTime(2000),
+               lastDate: DateTime(2100),
+               dateLabelText: 'Date',
+               onChanged: (val) => print(val),
+          ),
             ),
+
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+
     );
   }
 }
